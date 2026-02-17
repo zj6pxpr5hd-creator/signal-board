@@ -1,5 +1,5 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family:  "Noto Sans", sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -24,10 +24,11 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  min-width: 100vw;
   min-height: 100vh;
+  background-color: var(--bg-2);
+  margin: 0;
+  height: auto;
 }
 
 h1 {
@@ -65,4 +66,43 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+
+/*==============================
+      Custom
+==============================*/
+
+:root{
+  --bg: #242424;
+  --bg-2: #141414;
+  --text: #f9f9f9;
+}
+
+
+.noto-sans {
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+
+h1{
+  font-size: 3.5rem;
+  color: var(--text);
+  margin: 0;
+}
+
+
+h2{
+  color: var(--text);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+p{
+  color: var(--text);
 }
