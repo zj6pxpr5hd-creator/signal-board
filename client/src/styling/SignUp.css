@@ -57,7 +57,7 @@
 
 .signup-container button{
   margin-top: auto;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   width: min(86%, 300px);
   transition: transform 0.15s ease, opacity 0.15s ease;
 }
@@ -67,7 +67,16 @@
     transform: translateY(-1px);
 }
 
+.signup-container a{
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: black;
+}
 
+.signup-container a:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
 
 .signup-title{
   font-size: 1.5rem;

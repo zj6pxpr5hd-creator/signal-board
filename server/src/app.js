@@ -1,7 +1,7 @@
-
 const express = require('express');
 const cors = require("cors");
-const pool = require("./db");
+const pool = require("./db/db");
+const authRoutes = require("./routes/authRoutes");
 
 const app = express();
 
@@ -9,7 +9,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Routes
+//my routes
+app.use("/api/auth", authRoutes);
+
+
+//TEST Routes
 app.get('/', (req, res) => {
     res.json({message: "API working"});
 });
@@ -24,8 +28,5 @@ app.get('/test-db', async (req,res) => {
         res.status(500).json({ error: 'database error '});
     }
 });
-
-// WRITE NEW ROUTES IN HERE
-
 
 module.exports = app;
