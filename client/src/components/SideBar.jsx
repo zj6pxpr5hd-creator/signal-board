@@ -7,7 +7,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 
 
-function SideBar({ isOpen, onClose }){
+function SideBar({ isOpen, onClose, createSignal }){
 
 
     useEffect(() => {
@@ -43,7 +43,11 @@ function SideBar({ isOpen, onClose }){
                 <button className="sidebar-button" onClick={onClose}>
                     <FontAwesomeIcon icon={faEraser} size="2xl" />
                 </button>
-                <button className="sidebar-button" onClick={onClose}>
+                <button className="sidebar-button" onClick={ () => {
+                    createSignal();
+                    onClose();
+                }
+                }>
                     <FontAwesomeIcon icon={faPlus} size="2xl" />
                 </button>
 

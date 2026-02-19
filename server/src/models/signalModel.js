@@ -37,6 +37,14 @@ const getRecentSignals = async () => {
     return result;
 }
 
+//function to get all signals by user
+const getSignalsByUser = async (userid) => {
+    const result = await pool.query(
+        "SELECT * FROM signals WHERE user_id = $1 ORDER BY created_at DESC",
+        [userid]
+    );
+    return result.rows;
+}
 
 
 
@@ -44,5 +52,6 @@ const getRecentSignals = async () => {
 module.exports = {
     createSignal,
     findSignalByTitle,
-    getRecentSignals
+    getRecentSignals,
+    getSignalsByUser
 }

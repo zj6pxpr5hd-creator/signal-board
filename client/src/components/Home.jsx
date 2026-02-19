@@ -7,6 +7,8 @@ import SignalModal from './SignalModal'
 import { useEffect } from 'react'
 import DisplaySignal from './DisplaySignal'
 import Nav from './Nav'
+import SideBar from './SideBar'
+
 
 function Home({ setIsAuthed }){
 
@@ -15,7 +17,15 @@ function Home({ setIsAuthed }){
     const [ feedError, setFeedError ] = useState("");
     const [ loading, setLoading ] = useState(false);
     const [ feed, setFeed ] = useState([]);
+    const [sidebarOpen, setSidebarOpen] = useState(false);
 
+    const openMenu = () => {
+        setSidebarOpen(true);
+    };
+
+    const closeSidebar = () => {
+        setSidebarOpen(false);
+    };
     const navigate = useNavigate();
 
     const API_URL = import.meta.env.VITE_API_URL;
@@ -112,6 +122,13 @@ function Home({ setIsAuthed }){
         navigate("/signup");
     };
 
+    const openCreatePopup = () => {
+        setIsOpen(true); 
+        setCreateError("")
+    };
+
+
+
     useEffect(() => {
         setCreateError("");
         sendGetRecent();
@@ -120,15 +137,12 @@ function Home({ setIsAuthed }){
     return(
         <main className="home">
 
-            <Nav />
+            <Nav onClick={openMenu}/>
 
             <h1  className='home-title'>Home</h1>
             <section className="create-signal">
                 <h2 className="create-title">Crete new Signal</h2>
-                <button className='create-button' onClick={() => {
-                    setIsOpen(true); 
-                    setCreateError("")
-                    }}>
+                <button className='create-button' onClick={openCreatePopup}>
                     <FontAwesomeIcon className="create-icon" icon={faPlus} />
                 </button>
             </section>
@@ -147,6 +161,12 @@ function Home({ setIsAuthed }){
             }) : (<p>Loading Feed...</p>)}
                 
             {feedError!==0 && <p>{feedError}</p>}
+
+            <SideBar 
+                isOpen={sidebarOpen} 
+                onClose={closeSidebar}
+                createSignal={openCreatePopup}
+            />
 
             <button className='logout-button' onClick={() => logout()}>Logout</button>
         </main>

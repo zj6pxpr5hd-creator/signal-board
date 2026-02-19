@@ -1,21 +1,12 @@
 import '../styling/Nav.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
-import { useState } from 'react'
 import SideBar from './SideBar';
 
 
-function Nav(){
+function Nav({ onClick }){
 
-    const [sidebarOpen, setSidebarOpen] = useState(false);
 
-    const openMenu = () => {
-        setSidebarOpen(true);
-    };
-
-    const closeSidebar = () => {
-        setSidebarOpen(false);
-    };
 
     return(
         <>
@@ -23,7 +14,7 @@ function Nav(){
                 <button
                     type="button"
                     className="menu-button"
-                    onClick={openMenu}
+                    onClick={onClick}
                     aria-label="Open menu"
                 >
                     <FontAwesomeIcon 
@@ -33,7 +24,6 @@ function Nav(){
                     />
                 </button>
             </nav>
-            <SideBar isOpen={sidebarOpen} onClose={closeSidebar}/>
         </>
     );
 
