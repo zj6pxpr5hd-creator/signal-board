@@ -32,7 +32,7 @@ const findSignalByTitle = async (title) => {
 
 const getRecentSignals = async () => {
     const result = await pool.query(
-        "SELECT * FROM signals WHERE created_at >= NOW() - INTERVAL '1 day'"
+        "SELECT * FROM signals WHERE created_at >= NOW() - INTERVAL '1 day' ORDER BY created_at DESC LIMIT 50"
     );
     return result;
 }

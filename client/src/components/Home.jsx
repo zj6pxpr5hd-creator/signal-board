@@ -1,4 +1,3 @@
-import '../index.css'
 import '../styling/Home.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
@@ -7,7 +6,7 @@ import { useState } from 'react'
 import SignalModal from './SignalModal'
 import { useEffect } from 'react'
 import DisplaySignal from './DisplaySignal'
-
+import Nav from './Nav'
 
 function Home({ setIsAuthed }){
 
@@ -71,6 +70,7 @@ function Home({ setIsAuthed }){
             console.log("success: ", result);
 
             closePopup(); //closes popup if signal is creeted successfully
+            sendGetRecent();
 
         }catch (error) {
             setCreateError(error.message)
@@ -92,6 +92,7 @@ function Home({ setIsAuthed }){
             const results = await response.json();
             setFeed(results.signals.rows);
             console.log("success: ", results);
+            setFeedError("");
 
         }catch (error){
             setFeedError(error.message)
@@ -118,7 +119,8 @@ function Home({ setIsAuthed }){
 
     return(
         <main className="home">
-            <h1>Home</h1>
+            <Nav />
+            <h1  className='home-title'>Home</h1>
             <section className="create-signal">
                 <h2 className="create-title">Crete new Signal</h2>
                 <button className='create-button' onClick={() => {
@@ -135,11 +137,11 @@ function Home({ setIsAuthed }){
                 onSubmit={handleCreate}
                 parentError={createError}
             />
-            {feedError.length===0 && feed.map( (signal) => {
+            {feedError.length===0 ? feed.map( (signal) => {
                 return(
                     <DisplaySignal signal={signal} key={signal.id}/>
                 );
-            })}
+            }) : (<p>{feedError}</p>)}
                 
         
             <button className='logout-button' onClick={() => logout()}>Logout</button>
