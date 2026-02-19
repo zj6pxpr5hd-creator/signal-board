@@ -47,7 +47,3 @@
     border: 2px solid transparent;
     margin-top: 0.1rem;
 }
-
-.create-button:hover{
-    border: 2px solid rgba(255, 255, 255, 0.6);
-}

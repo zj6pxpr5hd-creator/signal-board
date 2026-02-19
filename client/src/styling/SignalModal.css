@@ -1,4 +1,4 @@
-.signal-text{
+.create-signal-text{
     width: 80%;
     min-height: 180px;
     margin: 0 auto;
@@ -16,12 +16,12 @@
     resize: none;
 }
 
-.signal-text:focus{
+.create-signal-text:focus{
     border-color: rgba(255, 255, 255, 0.3);
     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
 }
 
-.signal-text::placeholder{
+.create-signal-text::placeholder{
     color: rgba(255, 255, 255, 0.5);
 }
 
@@ -40,13 +40,13 @@
     gap: 2rem;
 }
 
-button{
-    border: 0;
+.modal button{
+    border: 1px solid transparent;
     border-radius: 10px;
     padding: 10px 14px;
     font-weight: 600;
     cursor: pointer;
-    transition: transform 120ms ease, background-color 120ms ease, color 120ms ease;
+    transition: transform 120ms ease, background-color 120ms ease, color 120ms ease, border-color 0.25s;
 }
 
 .modal-buttons button:first-child{
@@ -60,10 +60,20 @@ button{
     color: #111;
 }
 
-.modal-buttons button:hover{
-    transform: translateY(-1px);
+.modal button:hover{
+    border-color: #646cff;
 }
 
-.modal-buttons button:active{
-    transform: translateY(0);
+
+.create-signal-title{
+    width: 80%;
+    margin: 0 auto;
+    color: #f2f2f2;
+    background-color: #121212;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    padding: 10px 12px;
+    line-height: 1.4;
+    font-family: inherit;
+    font-size: 16px;
 }

@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require("cors");
 const pool = require("./db/db");
 const authRoutes = require("./routes/authRoutes");
+const signalRoutes = require("./routes/signalRoutes");
 
 const app = express();
 
@@ -11,7 +12,7 @@ app.use(cors());
 
 //my routes
 app.use("/api/auth", authRoutes);
-
+app.use("/api/signal", signalRoutes);
 
 //TEST Routes
 app.get('/', (req, res) => {

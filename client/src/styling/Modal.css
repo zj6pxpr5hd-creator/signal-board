@@ -22,7 +22,7 @@
     animation: modal-pop 180ms ease-out;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 1rem;
 }
 
 .modal h2{
