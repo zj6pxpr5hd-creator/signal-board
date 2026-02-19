@@ -13,3 +13,16 @@
 .menu-icon{
     color: "rgb(241, 242, 243)"   
 }
+
+.menu-button{
+    background: transparent;
+    border: 1px solid transparent;
+    padding: 0.4rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.menu-button:focus-visible{
+    border-color: #646cff;
+    outline: none;
+}

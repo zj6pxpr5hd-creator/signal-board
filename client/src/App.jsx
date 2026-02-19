@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Login from "./components/Login"
 import SignUp from "./components/SignUp"
 import Home from "./components/Home"
+import Footer from "./components/Footer"
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/signup" element={isAuthed ? <Navigate to="/home" replace /> : <SignUp setIsAuthed={setIsAuthed}/>} />
         <Route path="/login" element={isAuthed ? <Navigate to="/home" replace /> : <Login setIsAuthed={setIsAuthed}/>} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   )
 }

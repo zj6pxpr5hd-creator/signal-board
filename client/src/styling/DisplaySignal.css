@@ -4,6 +4,7 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 0;
     padding: 3rem;
+    padding-bottom: 1rem;
     box-shadow: none;
     display: flex;
     flex-direction: column;
@@ -31,7 +32,7 @@
 
 .signal-title{
     margin: 0;
-    font-size: 1.05rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.95);
     letter-spacing: 0.2px;
@@ -51,6 +52,13 @@
     margin: 0;
     color: rgba(255, 255, 255, 0.82);
     line-height: 1.45;
-    font-size: 0.98rem;
+    font-size: 1.1rem;
     text-align: left;
+}
+
+.signal-time{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

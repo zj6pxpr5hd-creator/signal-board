@@ -7,27 +7,27 @@
 
 
 .home-title{
-    margin-top: 2rem;
+    margin-top: 4rem;
 }
 
 
 .create-signal{
-    background-color: rgb(43, 43, 43);
+    background-color: #000000;
     min-width: 240px;
     max-width: 22rem;
     height: 36px;
     text-align: left;
     padding: 0.2rem 1.5rem 0.2rem 2rem;
     display: flex;
-    margin: 2.5rem 0;
+    margin: 1rem 0;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
     position: sticky;
-    top: 70px;
+    top: 90px;
 }
 
 .create-title{

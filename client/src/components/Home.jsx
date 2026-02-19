@@ -119,7 +119,9 @@ function Home({ setIsAuthed }){
 
     return(
         <main className="home">
+
             <Nav />
+
             <h1  className='home-title'>Home</h1>
             <section className="create-signal">
                 <h2 className="create-title">Crete new Signal</h2>
@@ -137,13 +139,15 @@ function Home({ setIsAuthed }){
                 onSubmit={handleCreate}
                 parentError={createError}
             />
-            {feedError.length===0 ? feed.map( (signal) => {
+            
+            {!loading ? feed.map( (signal) => {
                 return(
                     <DisplaySignal signal={signal} key={signal.id}/>
                 );
-            }) : (<p>{feedError}</p>)}
+            }) : (<p>Loading Feed...</p>)}
                 
-        
+            {feedError!==0 && <p>{feedError}</p>}
+
             <button className='logout-button' onClick={() => logout()}>Logout</button>
         </main>
     );
