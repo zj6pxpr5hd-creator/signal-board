@@ -1,7 +1,6 @@
 import '../styling/Nav.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
-import SideBar from './SideBar';
 
 
 function Nav({ onClick }){
@@ -10,7 +9,7 @@ function Nav({ onClick }){
 
     return(
         <>
-            <nav>
+            <nav className='nav-bar'>
                 <button
                     type="button"
                     className="menu-button"

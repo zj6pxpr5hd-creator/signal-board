@@ -104,6 +104,7 @@ const mine = async (req, res) => {
         }
 
         const userSignals = await getSignalsByUser(user.id);
+    
 
         res.status(200).json({
             message: "Signals retrieved successfully",
@@ -116,6 +117,32 @@ const mine = async (req, res) => {
     }
 
 };
+
+
+
+//DELETE    
+
+/*
+
+const delete = async (req, res) => {
+    
+    const {signal, token} = req.body;
+
+    try{
+
+
+    
+    
+    }catch(error){}
+
+
+
+    }
+
+
+*/
+
+
 
 
 module.exports = { create, recent, mine };

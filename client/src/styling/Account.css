@@ -1,0 +1,25 @@
+.account-section{
+    display: grid;
+    grid-template-columns: 240px 1fr; /* left column for user, right for signals */
+    gap: 3rem;
+    align-items: start;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+
+.account-data {
+  position: sticky;
+  top: 10rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+}
+
+
+.account-signals{
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+}

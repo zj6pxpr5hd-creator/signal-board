@@ -1,7 +1,7 @@
 .modal-overlay{
     position: fixed;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: var(--modal-bg);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,14 +11,14 @@
 }
 
 .modal{
-    background-color: #1f1f1f;
-    color: #f2f2f2;
+    background-color: var(--bg-3);
+    color: var(--bg-2);
     padding: 24px 24px 20px;
     border-radius: 14px;
     width: min(480px, 92vw);
     min-height: 320px;
     box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border);
     animation: modal-pop 180ms ease-out;
     display: flex;
     flex-direction: column;

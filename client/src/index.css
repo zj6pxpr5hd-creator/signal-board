@@ -13,15 +13,30 @@
   -moz-osx-font-smoothing: grayscale;
 
   overflow-X: hidden;
+
+  --bg: #000000;
+  --bg-2: #ffffff;
+  --bg-3: #1f1f1f;
+  --modal-bg: rgba(0,0,0,0.6);
+  --text-strong: #ffffff;
+  --text: #cccccc;
+  --border: rgba(255, 255, 255, 0.2);
+  --border-2: #e5e9f2;
+  --main-accent: #646cff;
+  --secondary-accent: #535bf2;
+  --btn-bg: #1a1a1a;
+  --shadow: rgba(15, 23, 42, 0.08);
+
+
 }
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--main-accent);
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: var(--secondary-accent);
 }
 
 body {
@@ -35,11 +50,12 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  color: var(--text-strong);
 }
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -49,7 +65,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--main-accent);
 }
 button:focus,
 button:focus-visible {
@@ -74,11 +90,6 @@ button:focus-visible {
       Custom
 ==============================*/
 
-:root{
-  --bg: #242424;
-  --bg-2: #141414;
-  --text: #f9f9f9;
-}
 
 
 .noto-sans {

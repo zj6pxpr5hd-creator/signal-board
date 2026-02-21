@@ -9,7 +9,12 @@ router.post("/create", create); //define endpoint  (complete endpoint will be ap
 //endpoint to fetch recent signals
 router.get("/recent", recent); //define endpoint  (complete endpoint will be api/signal/recent)
 
-router.get("/mine", mine);
+//endpoint to fetch a user signals
+router.get("/mine", mine);//define endpoint  (complete endpoint will be api/signal/mine)
+
+//endpoint to delete a signal
+//router.delete("/delete", delete); 
+
 
 module.exports = router;
 

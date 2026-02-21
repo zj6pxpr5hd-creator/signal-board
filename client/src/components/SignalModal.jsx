@@ -15,7 +15,7 @@ import '../styling/SignalModal.css'
 import { useState } from "react";
 import Modal from "./Modal";
 
-function SignalModal({ isOpen, onClose, onSubmit, parentError }){
+function SignalModal({ isOpen, onClose, onSubmit, parentError, loading }){
 
     //stores what the user types
     const [content, setContent] = useState("");
@@ -53,7 +53,7 @@ function SignalModal({ isOpen, onClose, onSubmit, parentError }){
             {parentError && <p className='error-message'>{parentError}</p>}
             <div className='modal-buttons'>
                 <button onClick={onClose}>Cancel</button>
-                <button onClick={handleSubmit}>Post</button>
+                <button onClick={handleSubmit}>{loading ? "Loading" : "Post"}</button>
             </div>
 
         </Modal>

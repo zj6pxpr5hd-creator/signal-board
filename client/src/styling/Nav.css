@@ -1,17 +1,19 @@
-.home nav{
+.nav-bar{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     position: fixed;
-    background-color: #000000;
+    background-color: var(--bg);
     top: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    left: 0;
+    border-bottom: 1px solid var(--border);
     width: 100vw;
     padding: 1rem 0 1rem 5rem;
+    z-index: 1000;
 }
 
 .menu-icon{
-    color: "rgb(241, 242, 243)"   
+    color: rgb(241, 242, 243); 
 }
 
 .menu-button{
@@ -23,6 +25,6 @@
 }
 
 .menu-button:focus-visible{
-    border-color: #646cff;
+    border-color: var(--main-accent);
     outline: none;
 }

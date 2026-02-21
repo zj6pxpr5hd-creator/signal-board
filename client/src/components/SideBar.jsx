@@ -1,13 +1,12 @@
 import { useEffect } from 'react';
 import '../styling/SideBar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEraser } from '@fortawesome/free-solid-svg-icons'
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faHome } from '@fortawesome/free-solid-svg-icons'
 
 
-
-function SideBar({ isOpen, onClose, createSignal }){
+function SideBar({ isOpen, onClose, createSignal, goToAccount, goToHome }){
 
 
     useEffect(() => {
@@ -37,12 +36,20 @@ function SideBar({ isOpen, onClose, createSignal }){
                 className="sidebar"
                 onClick={(e) => e.stopPropagation()}
             >
-                <button className="sidebar-button" onClick={onClose}>
+                <button className="sidebar-button" onClick={() => {
+                    goToHome();    
+                    onClose();}
+                }>
+                    <FontAwesomeIcon icon={faHome} size="2xl" />
+                </button>
+
+                <button className="sidebar-button" onClick={() => {
+                    goToAccount();    
+                    onClose();}
+                }>
                     <FontAwesomeIcon icon={faCircleUser} size="2xl" />
                 </button>
-                <button className="sidebar-button" onClick={onClose}>
-                    <FontAwesomeIcon icon={faEraser} size="2xl" />
-                </button>
+
                 <button className="sidebar-button" onClick={ () => {
                     createSignal();
                     onClose();

@@ -1,7 +1,7 @@
 .sidebar-overlay{
     position: fixed;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,8 +21,8 @@
     align-items: center;
     justify-content: center;
     gap: 2.5rem;
-    background-color: #000000;
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: var(--bg);
+    border-right: 1px solid var(--border);
     animation: sidebar-pop 180ms ease-out;
 }
 

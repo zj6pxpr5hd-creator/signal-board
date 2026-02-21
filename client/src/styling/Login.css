@@ -4,11 +4,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #ffffff;
-  border: 1px solid #e5e9f2;
+  background: var(--bg-2);
+  border: 1px solid var(--border-2);
   border-radius: 18px;
   padding: 1.5rem 1.25rem;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 10px 30px var(--shadow);
   color: var(--bg);
 
   /* Phone-like ratio */
@@ -38,8 +38,8 @@
 }
 
 .login-container input{
-  background-color: #ffffff;
-  border: 1px solid #cbd5e1;
+  background-color: var(--bg-2);
+  border: 1px solid var(--border-2);
   border-radius: 10px;
   padding: 0.65rem 0.8rem;
   width: min(86%, 300px);
@@ -47,11 +47,11 @@
   font-size: 0.95rem;
   transition: border-color 120ms ease, box-shadow 120ms ease;
   outline: none;
-  color: black;
+  color: var(--bg);
 }
 
 .login-container input:focus{
-  border-color: #2563eb;
+  border-color: var(--main-accent);
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
@@ -70,7 +70,7 @@
 .login-container a{
   font-size: 0.8rem;
   text-decoration: none;
-  color: black;
+  color: var(--bg);
 }
 
 .login-container a:hover{
