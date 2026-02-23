@@ -1,28 +1,12 @@
-const { createSignal, getRecentSignals, getSignalsByUser, deleteSignalById } = require("../models/signalModel");
+const { createSignal, getRecentSignals, getSignalsByUser, deleteSignalById, getSignalById } = require("../models/signalModel");
 const jwt = require("jsonwebtoken");
 
 const create = async (req, res) => {
 
     try{
-        const { title, content, token } = req.body;
+        const { title, content } = req.body;
 
-        if(!token){
-            return res.status(401).json({ message: "Invalid Token" });
-        }
-
-        let user;
-
-        try{
-
-            user = jwt.verify(token, process.env.JWT_SECRET);
-
-        }catch(error){
-            console.error(error);
-            return res.status(401).json({
-                message: "Invalid Token"
-            })
-        }
-        
+        const user = req.user;
 
         //returns error if title is missing
         if(!title || !title.trim()){
@@ -53,14 +37,21 @@ const create = async (req, res) => {
 
 }
 
-/*
-add new handler that calls the model function and returns tje row
-*/
-
 const recent = async (req, res) => {
     try{
 
-        const recentSignals = await getRecentSignals();
+        const page = req.query.page;
+        if(!page || page < 0 ){
+            page = 0;
+        }
+
+        const limit = 10;
+        const offset = (page * limit);
+
+        const returned = await getRecentSignals(limit, offset);
+
+        const recentSignals = returned.recentSignals;
+        const hasMore = returned.hasMore;
 
         if(!recentSignals){
             return res.status(404).json({ message:"No recent signals" });
@@ -68,7 +59,8 @@ const recent = async (req, res) => {
 
         res.status(200).json({  // 200 is standard success response for get request
             message: "Signals retrieved successfully",
-            signals: recentSignals
+            signals: recentSignals,
+            hasMore: hasMore
         })
         
     }catch(error){
@@ -79,32 +71,13 @@ const recent = async (req, res) => {
     }
 }
 
-
 const mine = async (req, res) => {
 
     try{
-        const auth = req.headers.authorization || "";
-        const token = auth.startsWith("Bearer ") ? auth.slice(7) : null;
 
-        if(!token){
-            return res.status(401).json({ message: "Invalid Token" });
-        }
-
-        let user;
-
-        try{
-
-            user = jwt.verify(token, process.env.JWT_SECRET);
-
-        }catch(error){
-            console.error(error);
-            return res.status(401).json({
-                message: "Invalid Token"
-            })
-        }
+        const user = req.user;
 
         const userSignals = await getSignalsByUser(user.id);
-    
 
         res.status(200).json({
             message: "Signals retrieved successfully",
@@ -114,7 +87,7 @@ const mine = async (req, res) => {
         
     }catch(error){
         return res.status(500).json({ message: "Server Error"});
-    }
+    } 
 
 };
 
@@ -127,6 +100,14 @@ const deletesignal = async (req, res) => {
     const { id } = req.params;
 
     try{
+
+        const userid = req.user.id;
+
+        const signal = await getSignalById(id);
+
+        if(signal.user_id !== userid ){
+            return res.status(403).json({ message: "Missing Authorization"})
+        }
 
         const deletedSignal = await deleteSignalById(id);
 

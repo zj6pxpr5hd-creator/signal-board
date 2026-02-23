@@ -27,7 +27,6 @@ function AccountDisplaySignal({ signal }){
 
     const handleDeletion = async () => {
 
-        console.log("request sent");
         deleteSignal();
 
     };
@@ -52,11 +51,6 @@ function AccountDisplaySignal({ signal }){
                 const data = response.json();
                 throw new Error(data.message || `Server Error: ${response.status}, try refreshing the page`)
             }
-
-            const result = await response.json();
-            console.log(result);
-
-            
 
 
         }catch(error){

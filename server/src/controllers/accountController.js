@@ -6,25 +6,7 @@ const jwt = require("jsonwebtoken");
 
         try{
 
-            const auth = req.headers.authorization || "";
-            const token = auth.startsWith("Bearer ") ? auth.slice(7) : null;
-
-            if(!token){
-                return res.status(401).json({ message: "Invalid Token" });
-            }
-
-            let user;
-
-            try{
-
-                user = jwt.verify(token, process.env.JWT_SECRET);
-
-            }catch(error){
-                console.error(error);
-                return res.status(401).json({
-                    message: "Invalid Token"
-                })
-            }
+            const user = req.user;
 
             const userSignals = await getSignalsByUser(user.id);
 

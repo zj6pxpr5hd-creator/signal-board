@@ -3,6 +3,7 @@ const router = express.Router(); //create a Router
 
 const { register, login } = require("../controllers/authController"); //imports register function from authController.js
 const { account } = require("../controllers/accountController");
+const { authMiddleware } = require("../middleware/authMiddleware");
 
 router.post("/signup", register); //define the route
 //this means: when someone makes a post request to /signup call register(req, res)
@@ -10,7 +11,7 @@ router.post("/signup", register); //define the route
 router.post("/login", login); //define the route
 //this means: when someone makes a post request to /login call login(req, res)
 
-router.get("/account", account);//define the route
+router.get("/account", authMiddleware, account);//define the route
 //this means: when someone makes a get request to /account call account(req, res)
 
 module.exports = router;

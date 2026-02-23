@@ -12,7 +12,7 @@ const Account = ({ setIsAuthed, refreshKey }) => {
     const API_URL = import.meta.env.VITE_API_URL;
 
     const getUserSignals = async () => {
-
+        
         const token = localStorage.getItem("token");
 
         try{

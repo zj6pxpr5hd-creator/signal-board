@@ -58,16 +58,15 @@ function Page ({ children, setIsAuthed }) {
         const data = {
             title: title,
             content: content,
-            token: token
         };
 
-        console.log("Send to backend:", title, content, token); //placeholder for now
         
         try{
             const response = await fetch(`${API_URL}/api/signal/create`,
             {
                 method: 'POST',
                 headers: {
+                    "Authorization": `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
@@ -78,8 +77,6 @@ function Page ({ children, setIsAuthed }) {
                 throw new Error(data.message || `Server Error: ${response.status}`);
             }
 
-            const result = await response.json();
-            console.log("success", result);
             setRefreshKey((k) => k+1);
             closeCreatePopup(); //closes popup if signal is creeted successfully
 

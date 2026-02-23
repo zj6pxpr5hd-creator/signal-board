@@ -4,6 +4,7 @@ function DisplaySignal({ signal }){
 
     const date = signal.created_at.split("T");
     const time = date[1].split(":");
+    time[0] = Number(time[0]) + 1;
 
     return(
         <article className="signal-card">

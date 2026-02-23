@@ -1,4 +1,5 @@
 //connection with db
+const { sign } = require("jsonwebtoken");
 const pool = require("../db/db");
 
 //function to create signal
@@ -22,6 +23,22 @@ const getSignalByTitle = async (title) => {
 };
 
 
+//function to find a signal by id
+const getSignalById = async (id) => {
+    const result = await pool.query(
+        "SELECT * FROM signals WHERE id = $1",//SQL query to find signal 
+        [id]
+    );
+    return result.rows[0];
+};
+
+
+
+
+
+
+
+
 
 /*function to select all recent signals
     logic => created_at >= NOW() - INTERVAL '1 day'
@@ -30,12 +47,24 @@ const getSignalByTitle = async (title) => {
 */
 
 
-const getRecentSignals = async () => {
+const getRecentSignals = async (limit, offset) => {
+
     const result = await pool.query(
-        "SELECT * FROM signals WHERE created_at >= NOW() - INTERVAL '1 day' ORDER BY created_at DESC LIMIT 50"
+        "SELECT * FROM signals ORDER BY created_at DESC, id DESC LIMIT $1 OFFSET $2",
+        [limit+1, offset]
     );
-    return result;
+
+    const hasMore = result.rowCount === limit+1;
+
+    return {
+            recentSignals: result.rows.slice(0, limit),
+            hasMore: hasMore
+        };
 }
+
+
+
+
 
 //function to get all signals by user
 const getSignalsByUser = async (userid) => {
@@ -67,5 +96,6 @@ module.exports = {
     getSignalByTitle,
     getRecentSignals,
     getSignalsByUser,
-    deleteSignalById
+    deleteSignalById,
+    getSignalById
 }

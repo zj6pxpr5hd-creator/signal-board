@@ -6,13 +6,13 @@ const { create, recent, mine, deletesignal } = require("../controllers/signalCon
 const { authMiddleware } = require("../middleware/authMiddleware");
 
 //endpoint to create new signal
-router.post("/create", create); //define endpoint  (complete endpoint will be api/signal/create)
+router.post("/create", authMiddleware, create); //define endpoint  (complete endpoint will be api/signal/create)
 
 //endpoint to fetch recent signals
 router.get("/recent", recent); //define endpoint  (complete endpoint will be api/signal/recent)
 
 //endpoint to fetch a user signals
-router.get("/mine", mine);//define endpoint  (complete endpoint will be api/signal/mine)
+router.get("/mine", authMiddleware, mine);//define endpoint  (complete endpoint will be api/signal/mine)
 
 //endpoint to delete a signal
 router.delete("/:id", authMiddleware, deletesignal); 
