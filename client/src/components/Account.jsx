@@ -32,9 +32,6 @@ const Account = ({ setIsAuthed, refreshKey }) => {
 
             const result = await response.json();
 
-
-            console.log(result.user);
-            console.log(result.signals);
             setUser(result.user);
             setSignals(result.signals);
             

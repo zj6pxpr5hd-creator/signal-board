@@ -13,7 +13,7 @@ const createSignal = async (title, content, userid) => {
 
 
 //function to find a signal by title
-const findSignalByTitle = async (title) => {
+const getSignalByTitle = async (title) => {
     const result = await pool.query(
         "SELECT * FROM signals WHERE title = $1",//SQL query to find signal 
         [title]
@@ -46,12 +46,26 @@ const getSignalsByUser = async (userid) => {
     return result.rows;
 }
 
+//DELETE
+//function to delete a signal by his id
+const deleteSignalById = async (signalid) => {
+
+    const result = await pool.query(    
+        "DELETE FROM signals WHERE id = $1 RETURNING *",
+        [signalid]
+    );
+
+    return result;
+
+};
+
 
 
 //exports
 module.exports = {
     createSignal,
-    findSignalByTitle,
+    getSignalByTitle,
     getRecentSignals,
-    getSignalsByUser
+    getSignalsByUser,
+    deleteSignalById
 }

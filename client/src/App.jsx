@@ -17,7 +17,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Navigate to={isAuthed ? "/page" : "/signup"} replace />} />
+        <Route path="/" element={<Navigate to={isAuthed ? "/home" : "/signup"} replace />} />
         <Route path="/home" element={
           isAuthed ? 
            <Page > 

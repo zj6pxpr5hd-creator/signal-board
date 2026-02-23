@@ -1,4 +1,4 @@
-const { createSignal, getRecentSignals, getSignalsByUser } = require("../models/signalModel");
+const { createSignal, getRecentSignals, getSignalsByUser, deleteSignalById } = require("../models/signalModel");
 const jwt = require("jsonwebtoken");
 
 const create = async (req, res) => {
@@ -122,27 +122,35 @@ const mine = async (req, res) => {
 
 //DELETE    
 
-/*
-
-const delete = async (req, res) => {
+const deletesignal = async (req, res) => {
     
-    const {signal, token} = req.body;
+    const { id } = req.params;
 
     try{
 
+        const deletedSignal = await deleteSignalById(id);
 
-    
-    
-    }catch(error){}
+        if(deletedSignal.rowCount === 0){
+            return res.status(404).json({ message: "Signal Not Found"});
+        }
 
+        
+        res.status(200).json({ 
+            message:"Signal Deleted Successfully",
+            deletedSignal: deletedSignal.rows[0]
+        });
 
+        return;
 
+    }catch(error){
+        console.error(error);
+        res.status(500).json({
+            message: "Server error"
+        });
     }
-
-
-*/
+}
 
 
 
 
-module.exports = { create, recent, mine };
+module.exports = { create, recent, mine, deletesignal };

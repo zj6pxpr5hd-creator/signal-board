@@ -1,5 +1,4 @@
 const { getSignalsByUser } = require("../models/signalModel");
-const { findUserByUsername } = require("../models/userModel.js"); //imports functions defined inside userModel.js for user creation, searching and checking password
 const jwt = require("jsonwebtoken");
 
 

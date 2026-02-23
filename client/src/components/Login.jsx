@@ -71,9 +71,10 @@ function Login({ setIsAuthed }){
 
 
     return(
-        <>
+        
+        <section className='page-container'>
             <Header />
-            <section className="login-container">
+            <main className="login-container">
                 <h2 className="login-title">Login</h2>
                 <form action="login" onSubmit={handleSubmit}>
                     <label htmlFor="username">Username</label>
@@ -106,8 +107,9 @@ function Login({ setIsAuthed }){
                     <button type="submit" disabled={loading}>{loading ? "Loading..." : "Login"}</button>
                     <Link to="/signup">don't have an account?</Link>
                 </form>
-            </section>
-        </>
+            </main>
+        </section>
+        
     );
 
 }

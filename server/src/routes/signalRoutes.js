@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-const { create, recent, mine } = require("../controllers/signalController");
+
+const { create, recent, mine, deletesignal } = require("../controllers/signalController");
+const { authMiddleware } = require("../middleware/authMiddleware");
 
 //endpoint to create new signal
 router.post("/create", create); //define endpoint  (complete endpoint will be api/signal/create)
@@ -13,7 +15,7 @@ router.get("/recent", recent); //define endpoint  (complete endpoint will be api
 router.get("/mine", mine);//define endpoint  (complete endpoint will be api/signal/mine)
 
 //endpoint to delete a signal
-//router.delete("/delete", delete); 
+router.delete("/:id", authMiddleware, deletesignal); 
 
 
 module.exports = router;
